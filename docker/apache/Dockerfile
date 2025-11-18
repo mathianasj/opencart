@@ -1,9 +1,7 @@
 FROM httpd:2.4-alpine
 
-COPY docker/apache/conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY docker/apache/conf/httpd.conf /etc/httpd/conf/httpd.conf
 
-RUN mkdir -p /usr/local/apache2/conf/sites-available
+COPY docker/apache/conf/opencart.conf /etc/httpd/conf.d/opencart.conf
 
-COPY docker/apache/conf/opencart.conf /usr/local/apache2/conf/sites-available/opencart.conf
-
-EXPOSE 80
+EXPOSE 8080
